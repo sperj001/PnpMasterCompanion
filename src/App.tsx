@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import React from 'react';
+import { StartPage } from './components/start-page/main-page.component';
+import { ServerTest } from './components/connection-tests/serverTest.component';
+import { NewGamePage } from './components/new-game/new-game.component';
+import { OtherServerTest } from './components/connection-tests/other-serverTest.component';
+import { ConnectionComponent } from './components/connection.component';
+import { Provider } from 'react-redux';
+import { store } from './Store';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export class App extends React.Component <any, any> {
+  
+  render(){
+    return (
+      <div>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path='/' component={StartPage}/>
+              <Route path='/selftest' component={ServerTest}/>
+              <Route path='/networktest' component={OtherServerTest}/>
+              <Route path='/new' component={NewGamePage}/>
+              
+            </Switch>
+            
+          </BrowserRouter>
+          <ConnectionComponent></ConnectionComponent>
+        </Provider>
+      </div>
+    );
+  }
 }
 
 export default App;
