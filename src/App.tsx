@@ -5,7 +5,7 @@ import { StartPage } from './components/start-page/main-page.component';
 import { ServerTest } from './components/connection-tests/serverTest.component';
 import { NewGamePage } from './components/new-game/new-game.component';
 import { OtherServerTest } from './components/connection-tests/other-serverTest.component';
-import { ConnectionComponent } from './components/connection.component';
+import ConnectionComponent  from './components/connection.component';
 import { Provider } from 'react-redux';
 import { store } from './Store';
 
@@ -23,9 +23,8 @@ export class App extends React.Component <any, any> {
               <Route path='/new' component={NewGamePage}/>
               
             </Switch>
-            
           </BrowserRouter>
-          <ConnectionComponent></ConnectionComponent>
+          <ConnectionComponent/>
         </Provider>
       </div>
     );

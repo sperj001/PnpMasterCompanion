@@ -1,7 +1,7 @@
-import React, { Dispatch } from "react";
+import React  from "react";
 import { connect } from 'react-redux';
 import { IState, IConnection } from "../reducers";
-import { createConnection } from "net";
+import { createConnection } from "../actions/connection.actions";
 
 interface ConnectionState{
     
@@ -21,9 +21,7 @@ export class ConnectionComponent extends React.Component<ConnectionProps, Connec
       }
     
     componentWillMount = () => {
-        console.log("I am here");
         if(this.props.createConnection){
-            console.log("Will run connection");
             this.props.createConnection();
         }
 
